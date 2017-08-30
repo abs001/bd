@@ -47,7 +47,7 @@
                     showMethod: 'slideDown',
                     timeOut: 4000
                 };
-                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+                toastr.success('Admin', 'Welcome to BloodClinic.org');
 
             }, 1300);
 

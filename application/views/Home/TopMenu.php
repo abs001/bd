@@ -11,7 +11,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                    <span class="m-r-sm text-muted welcome-message"><?php echo $_SESSION['message'];?></span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -108,10 +108,8 @@
                         </li>
                     </ul>
                 </li>
-
-
                 <li>
-                    <a href="login.html">
+                    <a href="<?php echo base_url();?>index.php/Admin/logout">
                         <i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>
