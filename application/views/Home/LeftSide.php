@@ -30,6 +30,62 @@
         <li><a href="<?php echo base_url();?>index.php/Admin/designation">Designations</a></li>
                         </ul>
                     </li>
+
+                    <li id="procurement">
+                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Procurement </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li id="master">
+                                <a href="#" id="damian">Master <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li id="supplier">
+                                        <a href="<?php echo base_url()."index.php/Procurement/supplier";?>">Supplier</a>
+                                    </li>
+                                    <li id="manufactur">
+                                        <a href="<?php echo base_url()."index.php/Procurement/manufactur";?>">Manufacture Company</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Item</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" id="damian">Purchase <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Add New Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Order Tracking</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Invoice</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Stock Adjustment</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" id="damian">Report <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Stock Ledger</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Current Stock</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+
+                        </ul>   
+                    </li> 
+
+
                 </ul>
             </div>
         </nav>
