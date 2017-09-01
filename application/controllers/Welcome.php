@@ -6,7 +6,9 @@ class Welcome extends CI_Controller {
 	{
 		if (isset($_SESSION['admin'])) {
 			$this->session->set_flashdata('message','Welcome admin');
-			$this->load->view('Director');
+			$data['pagename'] = "home";
+			$data['active_menu'] = "dashboard";
+			$this->load->view('Director',$data);
 		}else{
 			$this->session->set_flashdata('message','Login first to access your account');
 			redirect(base_url().'index.php/Admin/login');

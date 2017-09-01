@@ -13,4 +13,6 @@
     <link href="<?php echo base_url()?>assets/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet">
+    <!-- Datatable -->
+<link href="<?php echo base_url()?>assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 </head>
