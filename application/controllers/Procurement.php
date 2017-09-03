@@ -7,8 +7,6 @@ class Procurement extends CI_Controller {
 		parent::__construct();        
         $this->load->model('ProcurementModel');         
 	}
-	
-
 	//Start Supplier
 	public function supplier()
 	{
@@ -16,10 +14,9 @@ class Procurement extends CI_Controller {
 		$data['pagename'] = "supplier";
 		$data['category'] = "master";
 		$data['active_menu'] = "procurement";
-		$this->load->view('procurement',$data);
+		$this->load->view('Director',$data);
 
 	}
-
 	public function addSupplier(){
 		$data['sup_name'] = $this->input->post('sup_name');
 		$data['address'] = $this->input->post('address');
@@ -31,39 +28,28 @@ class Procurement extends CI_Controller {
 		$result = $this->ProcurementModel->addSupplier($data);
 		echo json_encode($result);
 	}
-
 	public function deleteSupplier($id){
 		$result = $this->ProcurementModel->deleteSupplier($id);
 		echo $result;
 	}
 //End Suppiler
-
-
-	//Start manufactur
+//Start manufactur
 	public function manufactur()
 	{
 		$data['manufacturResult'] = $this->ProcurementModel->manufactur();
 		$data['pagename'] = "manufactur";
 		$data['category'] = "master";
 		$data['active_menu'] = "procurement";
-		$this->load->view('procurement',$data);
+		$this->load->view('Director',$data);
 
 	}	
-
 	public function addManufactur(){
 		$data['manu_company'] = $this->input->post('name');
 		$result = $this->ProcurementModel->addManufactur($data);
 		echo json_encode($result);
 	}
-
 	public function deleteManufactur($id){
 		$result = $this->ProcurementModel->deleteManufactur($id);
 		echo $result;
 	}
-
-
-
-
-
-	
 }

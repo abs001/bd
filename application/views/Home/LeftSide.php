@@ -21,7 +21,7 @@
                         <a href="<?php echo base_url();?>index.php/Welcome"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a>
                     </li>
                     <li id="employee">
-                        <a href="index.html"><i class="fa fa-users"></i> <span class="nav-label">Emplployee</span> <span class="fa arrow"></span></a>
+                        <a href=""><i class="fa fa-users"></i> <span class="nav-label">Emplployee</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
         <li><a href="<?php echo base_url();?>index.php/Admin/createEmployee">Create Employee</a></li>
         <li><a href="<?php echo base_url();?>index.php/Admin/createUser">Create User</a></li>
@@ -30,7 +30,6 @@
         <li><a href="<?php echo base_url();?>index.php/Admin/designation">Designations</a></li>
                         </ul>
                     </li>
-
                     <li id="procurement">
                         <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Procurement </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -49,7 +48,6 @@
 
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="#" id="damian">Purchase <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
@@ -68,7 +66,6 @@
 
                                 </ul>
                             </li>
-
                             <li>
                                 <a href="#" id="damian">Report <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
@@ -81,11 +78,8 @@
                                     
                                 </ul>
                             </li>
-
                         </ul>   
                     </li> 
-
-
                 </ul>
             </div>
         </nav>

@@ -80,4 +80,52 @@ class Admin extends CI_Controller {
 		$result = $this->AdminModel->deleteDesignation($id);
 		echo $result;
 	}
+	// EMPLOYEE
+	public function createEmployee(){
+		$data['pagename'] = "CreateEmp";
+		$data['active_menu'] = "employee";
+		$data['designation'] = $this->AdminModel->getDesignation();//get options in '<select></select>' tag
+		$data['department'] = $this->AdminModel->getDepartment();//get options in '<select></select>' tag
+		$data['employeeResult'] = $this->AdminModel->createEmployee();
+		$this->load->view('Director',$data);
+	}
+	public function saveEmployee(){
+		$data['department'] = $this->input->post('department');
+		$data['name'] = $this->input->post('name');
+		$data['address'] = $this->input->post('address');
+		$data['email'] = $this->input->post('email');
+		$data['mobile'] = $this->input->post('mobile');
+		$data['telephone'] = $this->input->post('telephone');
+		$date = strtotime($this->input->post('birthdate'));
+		$data['birthdate'] = date('Y-m-d',$date);
+		$data['designation'] = $this->input->post('designation');
+		$data['qualification'] = $this->input->post('qualification');
+		$data['type'] = $this->input->post('type');
+		$result = $this->AdminModel->saveEmployee($data);
+		echo json_encode($result);	
+	}
+	public function editEmployee($id){
+		$result = $this->AdminModel->editEmployee($id);
+		echo json_encode($result);
+	}
+	public function updateEmployee(){
+		$data['id'] = $this->input->post('id');
+		$data['department'] = $this->input->post('department');
+		$data['name'] = $this->input->post('name');
+		$data['address'] = $this->input->post('address');
+		$data['email'] = $this->input->post('email');
+		$data['mobile'] = $this->input->post('mobile');
+		$data['telephone'] = $this->input->post('telephone');
+		$date = strtotime($this->input->post('birthdate'));
+		$data['birthdate'] = date('Y-m-d',$date);
+		$data['designation'] = $this->input->post('designation');
+		$data['qualification'] = $this->input->post('qualification');
+		$data['type'] = $this->input->post('type');
+		$result = $this->AdminModel->updateEmployee($data);
+		echo json_encode($result);	
+	}
+	public function deleteEmployee($id){
+		$result = $this->AdminModel->deleteEmployee($id);
+		echo json_encode($result);
+	}
 }

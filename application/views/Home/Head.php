@@ -14,5 +14,8 @@
     <link href="<?php echo base_url()?>assets/css/animate.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet">
     <!-- Datatable -->
-<link href="<?php echo base_url()?>assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
 </head>

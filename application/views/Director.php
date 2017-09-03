@@ -22,6 +22,15 @@
 	  	 	if ($pagename == "designation") {
 	  	 		$this->load->view('Home/Designation'); 
 	  	 	}
+	  	 	if ($pagename == "CreateEmp") {
+	  	 		$this->load->view('Home/CreateEmp'); 
+	  	 	}
+	  	 	if ($pagename == "supplier") {
+	  	 		$this->load->view('Home/Supplier'); 
+	  	 	}
+	  	 	if ($pagename == "manufactur") {
+	  	 		$this->load->view('Home/Manufactur'); 
+	  	 	}
 	    ?>
 	    </div>
 	    <script>
@@ -31,6 +40,9 @@
 			}
 			if (menuOption=="employee") {
 				$("#employee").addClass("active");
+			}
+			if (menuOption=="procurement") {
+				$("#procurement").addClass("active");
 			}
 	    </script>
     </div>

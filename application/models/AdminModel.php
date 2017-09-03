@@ -81,5 +81,57 @@ class AdminModel extends CI_Model {
 		}
 		return $result;
 	}
+	// Employee related functions
+	public function getDesignation(){
+		$this->db->select('name');
+		$result = $this->db->get('designation')->result_array();
+		return $result;
+	}
+	public function getDepartment(){
+		$this->db->select('name');
+		$result = $this->db->get('department')->result_array();
+		return $result;
+	}
+	public function createEmployee(){ //Return all employees while loading page
+		$this->db->order_by('id','desc');
+		$result = $this->db->get('employee')->result_array(); 
+		return $result;	
+	}
+	public function saveEmployee($data){
+		$this->db->insert('employee',$data);
+		if($this->db->affected_rows()>0){
+			$this->db->order_by('id','desc');
+			$this->db->limit(1);
+			$result = $this->db->get('employee')->result_array();
+			return $result;
+		}else{
+			$result = "failed";	
+		}
+	}
+	public function editEmployee($id){
+		$result = $this->db->get_where('employee',array('id' => $id))->result_array();
+		return $result;
+	}
+	public function updateEmployee($data){
+		$id = $data['id'];
+		$this->db->where('id', $id);
+		$this->db->update('employee',$data);
+		if($this->db->affected_rows()>0){
+			$result = "success";
+		}else{
+			$result = "failed";	
+		}
+		return $result;
+	}
+	public function deleteEmployee($id){
+		$this->db->where('id',$id);
+		$this->db->delete('employee');
+		if($this->db->affected_rows()>0){
+			$result = "success";	
+		}else{
+			$result = "failed";	
+		}
+		return $result;
+	}
 }
 ?>
