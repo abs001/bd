@@ -1,129 +1,16 @@
-<div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
-                    <h2>Suppiler</h2>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.html">Procurement</a>
-                        </li>
-                        <li>
-                            <a>Master</a>
-                        </li>
-                        <li class="active">
-                            <strong>Supplier</strong>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-lg-2">
-
-                </div>
-            </div>
-
-
-
-<div class="ibox ">
-                        <div class="ibox-title">
-                            <h5>Add Supplier</h5>
-
-                        </div>
-                        <div class="ibox-content">
-                            
-
-                        
-
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supplierModal">
-                                <i class="fa fa-plus"></i>&nbsp;Add Supplier
-                            </button>
-                            <div class="modal inmodal" id="supplierModal" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content animated fadeIn">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                           
-                                            <h4 class="modal-title">Supplier Details</h4>
-                                            <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
-                                        </div>
-                                        <form  class="form-horizontal" id="form_supplier">
-                                        <div class="modal-body">
-                                            
-                                            
-                                                
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Supplier Name</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="sup_name" placeholder="Enter Supplier Name" >
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Address</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="address" placeholder="Enter Address">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">City</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="city" placeholder="Enter City">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Telephone</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="telephone" placeholder="Enter Telephone">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Fax No</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="fax_no" placeholder="Enter Fax Number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Email Id</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="email" placeholder="Enter Email Id">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Web</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="web" placeholder="Enter Web Address">
-                                                        </div>
-                                                    </div>
-                                                 
-                                            
-
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="submit" id="supplier_button"   class="btn btn-primary">Save changes</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-2">
-
-                </div>
-                    </div>
-
-
-<div class="wrapper wrapper-content animated fadeInRight">           
 <div class="row">
- 
- <div class="row">
 <div class="col-lg-12">
     <div class="ibox float-e-margins">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Employee / All Roles</h5>
-                        
+                        <h5>Supplier / Create Supplier</h5>
+                        <div class="text-right">    
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createSupModal">
+                                Add Supplier
+                            </button>
+                        </div>
                     </div>
                 <div class="ibox-content">
                     <div class="table-responsive">
@@ -137,118 +24,150 @@
                         <th>Fax No</th>
                         <th>Email</th>
                         <th>Web</th>
-                        <th></th>
-                        
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
 <?php 
-    $i = 1;
     foreach ($supplierResult as $value) {
 ?>
-                    <tr class="gradeX">
-                        <td><?php echo $value['sup_name'];?></td>
-                        <td><?php echo $value['address'];?></td>
-                        <td><?php echo $value['city'];?></td>
-                        <td class="center"><?php echo $value['telephone'];?></td>
-                        <td class="center"><?php echo $value['fax_no'];?></td>
-                        <td><?php echo $value['email'];?></td>
-                        <td><?php echo $value['web'];?></td>
-
-                        <td class="center"><button class="btn btn-outline btn-success  dim" type="button" id="roleDelete" data-toggle="modal" data-target="#editSupplierModal<?php echo $i;?>"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-outline btn-danger  dim " type="button" id="roleDelete" onclick="deleteSupplier(<?php echo $value['id'];?>)"><i class="fa fa-times"></i></button></td>
-                    </tr>
-                                
-                        
-                            <div class="modal inmodal" id="editSupplierModal<?php echo $i;?>" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content animated fadeIn">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                           
-                                            <h4 class="modal-title">Supplier Details</h4>
-                                            <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
-                                        </div>
-                                        <form  class="form-horizontal" id="form_supplier">
-                                        <div class="modal-body">
-                                            
-                                            
-                                                
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Supplier Name</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="sup_name" placeholder="Enter Supplier Name" value="<?php echo $value['sup_name'];?>">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Address</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="address" placeholder="Enter Address" value="<?php echo $value['address'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">City</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="city" placeholder="Enter City" value="<?php echo $value['city'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Telephone</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="telephone" placeholder="Enter Telephone" value="<?php echo $value['telephone'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Fax No</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="fax_no" placeholder="Enter Fax Number" value="<?php echo $value['fax_no'];?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Email Id</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="email" placeholder="Enter Email Id" value="<?php echo $value['email'];?>">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group"><label class="col-sm-3 control-label">Web</label>
-
-                                                        <div class="col-sm-9">
-                                                            <input type="text" class="form-control" name="web" placeholder="Enter Web Address" value="<?php echo $value['web'];?>">
-                                                        </div>
-                                                    </div>
-                                                 
-                                            
-
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="submit" id="supplier_button"   class="btn btn-primary">Save changes</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-               
+    <tr class="gradeX">
+        <td><?php echo $value['sup_name'];?></td>
+        <td><?php echo $value['address'];?></td>
+        <td><?php echo $value['city'];?></td>
+        <td class="center"><?php echo $value['telephone'];?></td>
+        <td class="center"><?php echo $value['fax_no'];?></td>
+        <td><?php echo $value['email'];?></td>
+        <td><?php echo $value['web'];?></td>
+        <td>
+<button class="btn btn-warning" id="supEdit" data-toggle="modal" onclick="supplierEdit(<?php echo $value['id']?>);" data-target="#editSupModal"><i class="fa fa-pencil"></i></span></button></td>
+        <td><button class="btn btn-danger" id="supDelete" onclick="deleteSup(<?php echo $value['id']?>)"><i class="fa fa-trash"></i></span></button></td>
+    </tr>
 <?php
-$i++;
     }
-?>                    
-                 </tbody>
+?>
+                    </tbody>
                     </table>
+                        </div>
+                        </div>
                     </div>
-                    </div>
+<!-- Modal : createemp -->
+<div class="modal inmodal fade" id="createSupModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Supplier Details</h4>
             </div>
+        <form  class="form-horizontal" id="fromCreateSup" method="post">
+                <div class="modal-body">
+                    <div class="form-group"><label class="col-sm-3 control-label">Supplier Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="sup_name" placeholder="Enter Supplier Name" >
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-3 control-label">Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="address" placeholder="Enter Address">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">City</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="city" placeholder="Enter City">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Telephone</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="telephone" placeholder="Enter Telephone">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Fax No</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="fax_no" placeholder="Enter Fax Number">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Email Id</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="email" placeholder="Enter Email Id">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Web</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="web" placeholder="Enter Web Address">
+                        </div>
+                    </div>
+               </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                <button type="submit" id="supplier_button"   class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
-    </div>                    
-    <!-- End of display role -->
     </div>
 </div>
-    
-<!-- End of role -->
+<!-- End of modal -->
+<!-- Modal : EditSupplier Update -->
+<div class="modal inmodal fade" id="editSupModal" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Edit Supplier Details</h4>
+            </div>
+        <form  class="form-horizontal" id="form_supplier">
+                <div class="modal-body">
+                    <div class="form-group"><label class="col-sm-3 control-label">Supplier Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="sup_name" id="sup_name" placeholder="Enter Supplier Name" >
+                        </div>
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-3 control-label">Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">City</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="city" id="city" placeholder="Enter City">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Telephone</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="telephone" id="telephone"  placeholder="Enter Telephone">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Fax No</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="fax_no" id="fax_no" placeholder="Enter Fax Number">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Email Id</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Id">
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Web</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="web" id="web" placeholder="Enter Web Address">
+                        </div>
+                    </div>
+               </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                <button type="submit" id="supplier_button"   class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+<!-- End of modal -->
+                </div>
+            </div>                    
+        </div>
+    </div>
 </div>
 <script src="<?php echo base_url();?>assets/js/jquery-3.1.1.min.js"></script>
 <!-- Mainly scripts -->
@@ -260,23 +179,34 @@ $i++;
 <!-- Custom and plugin javascript -->
 <script src="<?php echo base_url();?>assets/js/inspinia.js"></script>
 <script src="<?php echo base_url();?>assets/js/plugins/pace/pace.min.js"></script>
-<script>
-        $(document).ready(function(){
-            $('.dataTables-example').DataTable({
-                pageLength: 10,
-                responsive: true,
-                 "aaSorting": [], //Stop initial sorting
-            });
-
-        });
-</script>    
-<!-- FORM SUBMISSION -->
+<!-- Date picker -->
+<script src="<?php echo base_url();?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/fullcalendar/moment.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/plugins/clockpicker/clockpicker.js"></script>
 <script>
     $(document).ready(function(){
-        $("#form_supplier").submit(function(){
-            $('#supplierModal').modal('hide');
-            var data = $("#form_supplier").serialize();
-            console.log(data);
+        //Datatable
+        $('.dataTables-example').DataTable({
+            pageLength: 10,
+            responsive: true,
+             "aaSorting": [], //Stop initial sorting
+        });
+        //Datepicker
+        $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+        });
+    });
+    //Create supplier
+    $(document).ready(function(){
+        $("#fromCreateSup").submit(function(){
+            $('#createSupModal').modal('hide');
+            var data = $("#fromCreateSup").serialize();
+
             $.ajax({
                 url: "<?php echo base_url()?>index.php/Procurement/addSupplier",
                 data: data,
@@ -284,7 +214,7 @@ $i++;
                 dataType: "json",
                 success: function(data) {
                   console.log("Here: "+data);
-                    var tr;
+                   var tr;
                    $.each(data,function(i,o){
                         tr = $('<tr/>');
                         tr.append("<td>" + o.sup_name + "</td>");
@@ -295,41 +225,86 @@ $i++;
                         tr.append("<td>" + o.email + "</td>");
                         tr.append("<td>" + o.web + "</td>");
                         tr.append(
-                            '<td class="center"><button class="btn btn-outline btn-success  dim" type="button" id="roleDelete" onclick="deleteRole('+o.id+')"><i class="fa fa-pencil"></i></button> <button class="btn btn-outline btn-danger  dim " type="button" id="roleDelete" onclick="deleteRole('+o.id+')"><i class="fa fa-times"></i></button></td>'
+'<td><button class="btn btn-warning" id="supEdit" data-toggle="modal" data-target="#editSupModal onclick="editSup('+o.id+')"><i class="fa fa-pencil"></i></span></button></td>'
+                            );
+                        tr.append(
+'<td><button class="btn btn-warning" id="supDelete" onclick="deleteSup('+o.id+')"><i class="fa fa-trash"></i></span></button></td>'
                             );
                         $('table').prepend(tr);     
                    });
                 },
                error:function(data){
-                    console.log(data);
+                    console.log("err1");
+                }     
+            });
+            return false;
+        });
+        // Update Employee
+        $("#formEditSup").submit(function(){
+            $('#editSupModal').modal('hide');
+            var data = $("#formEditSup").serialize();
+            console.log("Here: "+data);
+            $.ajax({
+                url: "<?php echo base_url()?>index.php/Procurement/updateSupplier",
+                data: data,
+                type: 'post',
+                dataType: "json",
+                success: function(data) {
+                    console.log("success: "+data);
+                    location.reload();
+                },
+               error:function(data){
+                    console.log("err1");
                 }     
             });
             return false;
         });
     });//DocumentReadyEnd
-    //Delete role start
-        function deleteSupplier(id)
-        {
-          if(confirm('Are you sure to delete this?'))
-          {
-              $.ajax({
-                url : "<?php echo base_url()?>index.php/Procurement/deleteSupplier/"+id,
-                type: "POST",
-                success: function(data) {
-                  if(data=='success'){
-                    console.log("success: ");
-                    location.reload();
-                    //Add sript to delete without refresh
-                  }
-                  else if(data=='failed'){
-                    console.log("failed: ");
-                  }
-                },
-               error:function(data){
-                    console.log("error:");
-                }     
-            });
-            return false;
-          }
-        }
+    function deleteSup(id){
+        console.log("Here: "+id);
+        $.ajax({
+            url:"<?php echo base_url()?>index.php/Procurement/deleteSupplier/"+id,
+            type: 'post',
+            dataType: 'json',
+            success: function(data){
+                location.reload();
+            },
+            error: function(data){
+                console.log("error");
+            }
+        }); 
+    }
+    function supplierEdit(id){
+        console.log("Here: "+id);
+
+        $.ajax({
+            url: "<?php echo base_url()?>index.php/Procurement/editSupplier/"+id,
+            type: 'post',
+            dataType: 'json',
+            success:function(data){
+                console.log("data: "+data[0].email);
+                var id = data[0].id;
+                var sup_name = data[0].sup_name;
+                var address = data[0].address;
+                var city = data[0].city;
+                var telephone = data[0].telephone;
+                var fax_no = data[0].fax_no;
+                var email = data[0].email;
+                var web = data[0].web;
+                //Set data to Modal
+                $('#id').attr("value",id);
+                $('#sup_name').attr("value",sup_name);
+                $('#address').html("value",address);
+                $('#city').attr("value",city);
+                $('#telephone').attr("value",telephone);
+                $('#fax_no').attr("value",fax_no);
+                $('#email').html("value",email);
+                $('#web').attr("value",web);
+            },
+            error:function(data){
+                console.log("Error");
+            },
+        });
+        return false;
+    }
 </script>

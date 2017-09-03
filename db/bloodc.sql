@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2017 at 04:40 PM
--- Server version: 5.7.9
--- PHP Version: 5.6.16
+-- Generation Time: Sep 03, 2017 at 04:42 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `bloodc`
@@ -26,14 +26,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `lastlogin` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admin`
@@ -45,16 +44,35 @@ INSERT INTO `admin` (`id`, `email`, `password`, `lastlogin`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `cat_name`, `created_at`) VALUES
+(3, 'Drug', '2017-09-02 14:34:02');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `department`
 --
 
-DROP TABLE IF EXISTS `department`;
 CREATE TABLE IF NOT EXISTS `department` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `department`
@@ -71,13 +89,12 @@ INSERT INTO `department` (`id`, `name`, `description`) VALUES
 -- Table structure for table `designation`
 --
 
-DROP TABLE IF EXISTS `designation`;
 CREATE TABLE IF NOT EXISTS `designation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `designation`
@@ -92,10 +109,33 @@ INSERT INTO `designation` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `drug`
+--
+
+CREATE TABLE IF NOT EXISTS `drug` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `drug_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `category` text COLLATE utf8_unicode_ci NOT NULL,
+  `unit_pack` text COLLATE utf8_unicode_ci NOT NULL,
+  `reorder_level` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_id` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `drug`
+--
+
+INSERT INTO `drug` (`id`, `drug_name`, `category`, `unit_pack`, `reorder_level`, `created_id`) VALUES
+(2, 'dsjklj', 'Drug', 'k;lk', 'lkl;k', '2017-09-02 15:37:44'),
+(3, 'jhjk', 'Drug', 'kl;k', 'lk;lk;lk', '2017-09-02 15:40:21');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `employee`
 --
 
-DROP TABLE IF EXISTS `employee`;
 CREATE TABLE IF NOT EXISTS `employee` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `department` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -109,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `qualification` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `employee`
@@ -127,10 +167,47 @@ INSERT INTO `employee` (`id`, `department`, `name`, `address`, `email`, `mobile`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `item`
+--
+
+CREATE TABLE IF NOT EXISTS `item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `manu_company` text COLLATE utf8_unicode_ci NOT NULL,
+  `category` text COLLATE utf8_unicode_ci NOT NULL,
+  `supplier` text COLLATE utf8_unicode_ci NOT NULL,
+  `current_stock` text COLLATE utf8_unicode_ci NOT NULL,
+  `mfg_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `reorder_lavel` text COLLATE utf8_unicode_ci NOT NULL,
+  `unit` text COLLATE utf8_unicode_ci NOT NULL,
+  `cost` text COLLATE utf8_unicode_ci NOT NULL,
+  `expiry_status` text COLLATE utf8_unicode_ci NOT NULL,
+  `purchaes_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `batch_no` text COLLATE utf8_unicode_ci NOT NULL,
+  `ida_code` text COLLATE utf8_unicode_ci NOT NULL,
+  `barcode` text COLLATE utf8_unicode_ci NOT NULL,
+  `case_pack_rate` text COLLATE utf8_unicode_ci NOT NULL,
+  `sell_price` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`id`, `item_name`, `manu_company`, `category`, `supplier`, `current_stock`, `mfg_date`, `reorder_lavel`, `unit`, `cost`, `expiry_status`, `purchaes_date`, `batch_no`, `ida_code`, `barcode`, `case_pack_rate`, `sell_price`, `created_at`) VALUES
+(1, 'nsdnaj', 'Cipla', 'kljklj', 'Abhijit kumbhar', 'jhjh', '10/11/2013', 'jhjk', 'jhjhjk', 'jlkl', 'Start', '10/11/2013', 'lkl;k', 'lk', 'l;k;lk', 'k;l', 'k;lkl;k', '2017-09-02 13:25:11'),
+(2, 'nsdnaj', 'Cipla', 'kljklj', 'Abhijit kumbhar', 'jhjh', '10/11/2013', 'jhjk', 'jhjhjk', 'jlkl', 'Start', '10/11/2013', 'lkl;k', 'lk', 'l;k;lk', 'k;l', 'k;lkl;k', '2017-09-02 13:26:20'),
+(3, 'Omee', 'Cipla', 'Drug', 'Abhijit kumbhar', '23', '09/02/2017', '34', '9', '67', 'Start', '10/11/2013', '34567', '76876', '7687', '6786', '786786786', '2017-09-02 15:04:22'),
+(4, 'dhjkahs', 'Indofar', 'Drug', 'Abhijit kumbhar', 'mjlkjkl', '09/02/2017', 'kjlk', 'jkljklj', 'lkjkljlk', 'Start', '09/02/2017', '34567', '56789', '6789', '6789', '67890', '2017-09-02 15:06:45');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `manufactur`
 --
 
-DROP TABLE IF EXISTS `manufactur`;
 CREATE TABLE IF NOT EXISTS `manufactur` (
   `id` int(11) NOT NULL,
   `manu_company` text COLLATE utf8_unicode_ci NOT NULL,
@@ -150,16 +227,44 @@ INSERT INTO `manufactur` (`id`, `manu_company`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `purchase_order`
+--
+
+CREATE TABLE IF NOT EXISTS `purchase_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `po_no` text COLLATE utf8_unicode_ci NOT NULL,
+  `ref_no` text COLLATE utf8_unicode_ci NOT NULL,
+  `po_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `item` text COLLATE utf8_unicode_ci NOT NULL,
+  `cost` text COLLATE utf8_unicode_ci NOT NULL,
+  `per` text COLLATE utf8_unicode_ci NOT NULL,
+  `quantity` text COLLATE utf8_unicode_ci NOT NULL,
+  `amount` text COLLATE utf8_unicode_ci NOT NULL,
+  `current_stock` text COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `purchase_order`
+--
+
+INSERT INTO `purchase_order` (`id`, `po_no`, `ref_no`, `po_date`, `item`, `cost`, `per`, `quantity`, `amount`, `current_stock`, `status`, `created_at`) VALUES
+(6, 'knk', 'kln', 'k', 'kn', 'kln', 'lkn', 'kln', 'lknlknkl', 'nlkn', 1, '2017-09-02 17:57:33');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `role`
@@ -177,7 +282,6 @@ INSERT INTO `role` (`id`, `name`, `description`) VALUES
 -- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `supplier`;
 CREATE TABLE IF NOT EXISTS `supplier` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sup_name` text COLLATE utf8_unicode_ci NOT NULL,
@@ -189,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `web` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `supplier`
@@ -207,7 +311,6 @@ INSERT INTO `supplier` (`id`, `sup_name`, `address`, `city`, `telephone`, `fax_n
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -221,7 +324,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usertype` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `user`

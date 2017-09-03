@@ -37,6 +37,19 @@
 	  	 	if ($pagename == "assignrole") {
 	  	 		$this->load->view('Home/AssignRole'); 
 	  	 	}
+	  	 	if ($pagename == "item") {
+	  	 		$this->load->view('Home/Item'); 
+	  	 	}
+
+	  	 	if ($pagename == "category") {
+	  	 		$this->load->view('Home/Category'); 
+	  	 	}
+	  	 	if ($pagename == "drug") {
+	  	 		$this->load->view('Home/Drug'); 
+	  	 	}
+	  	 	if ($pagename == "po") {
+	  	 		$this->load->view('Home/PurchaseOrder'); 
+	  	 	}
 	    ?>
 	    </div>
 	    <script>
@@ -49,6 +62,35 @@
 			}
 			if (menuOption=="procurement") {
 				$("#procurement").addClass("active");
+				var category = <?php echo json_encode($category); ?>;
+				if (category=="master") {
+					$("#master").addClass("active");
+				}
+				if (category=="purchase") {
+					$("#purchase").addClass("active");
+				}
+
+				var pagename = <?php echo json_encode($pagename); ?>;
+
+				if (pagename=="supplier") {
+					$("#supplier").addClass("active");
+				}
+
+				if (pagename=="manufactur") {
+					$("#manufactur").addClass("active");
+				}
+				if (pagename=="item") {
+					$("#item").addClass("active");
+				}
+				if (pagename=="category") {
+					$("#cat").addClass("active");
+				}
+				if (pagename=="drug") {
+					$("#drug").addClass("active");
+				}
+				if (pagename=="po") {
+					$("#po").addClass("active");
+				}
 			}
 	    </script>
     </div>

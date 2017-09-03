@@ -23,6 +23,19 @@
 	  	 	if ($pagename == "designation") {
 	  	 		$this->load->view('Home/Designation'); 
 	  	 	}
+	  	 	if ($pagename == "item") {
+	  	 		$this->load->view('Home/Item'); 
+	  	 	}
+
+	  	 	if ($pagename == "category") {
+	  	 		$this->load->view('Home/Category'); 
+	  	 	}
+	  	 	if ($pagename == "drug") {
+	  	 		$this->load->view('Home/Drug'); 
+	  	 	}
+	  	 	if ($pagename == "po") {
+	  	 		$this->load->view('Home/PurchaseOrder'); 
+	  	 	}
 	    ?>
 	    </div>
 	    <script>
@@ -48,6 +61,18 @@
 
 				if (pagename=="manufactur") {
 					$("#manufactur").addClass("active");
+				}
+				if (pagename=="item") {
+					$("#item").addClass("active");
+				}
+				if (pagename=="category") {
+					$("#cat").addClass("active");
+				}
+				if (pagename=="drug") {
+					$("#drug").addClass("active");
+				}
+				if (pagename=="po") {
+					$("#po").addClass("active");
 				}
 			}
 

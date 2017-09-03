@@ -43,20 +43,24 @@
                                     <li id="manufactur">
                                         <a href="<?php echo base_url()."index.php/Procurement/manufactur";?>">Manufacture Company</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Item</a>
+                                    <li id="item">
+                                        <a href="<?php echo base_url()."index.php/Procurement/item";?>">Item</a>
                                     </li>
+                                    <li id="cat">
+                                        <a href="<?php echo base_url()."index.php/Procurement/category";?>">Category</a>
+                                    </li>
+                                    
 
                                 </ul>
                             </li>
-                            <li>
+                            <li id="purchase">
                                 <a href="#" id="damian">Purchase <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Add New Order</a>
+                                    <li id="po">
+                                        <a href="<?php echo base_url()."index.php/Procurement/purchaseOrder";?>">Purchase Order</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Order Tracking</a>
+                                    <li id="drug">
+                                        <a href="<?php echo base_url()."index.php/Procurement/drug";?>">Drug</a>
                                     </li>
                                     <li>
                                         <a href="#">Invoice</a>

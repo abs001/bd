@@ -5,10 +5,10 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Manufactur / Create Manufactur</h5>
+                        <h5>Category / Create Category</h5>
                         <div class="text-right">    
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#companModal">
-                                Add Manufactur
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#catModal">
+                                Add Category
                             </button>
                         </div>
                     </div>
@@ -17,18 +17,18 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" id="roleTable" >
                     <thead>
                     <tr>
-                        <th>Company</th>
+                        <th>Category</th>
                         <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
 <?php 
-    foreach ($manufacturResult as $value) {
+    foreach ($catResult as $value) {
 ?>
     <tr class="gradeX">
-       <td><?php echo $value['manu_company'];?></td>
+       <td><?php echo $value['cat_name'];?></td>
         
-        <td><button class="btn btn-danger" id="supDelete" onclick="deleteManufactur(<?php echo $value['id']?>)"><i class="fa fa-trash"></i></span></button></td>
+        <td><button class="btn btn-danger" id="supDelete" onclick="deleteCategory(<?php echo $value['id']?>)"><i class="fa fa-trash"></i></span></button></td>
     </tr>
 <?php
     }
@@ -39,24 +39,24 @@
                         </div>
                     </div>
 <!-- Modal : createemp -->
-<div class="modal inmodal fade" id="companModal" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal inmodal fade" id="catModal" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Manufactur Company</h4>
+                <h4 class="modal-title">Category</h4>
             </div>
-        <form  class="form-horizontal" id="form_manufactur" method="post">
+        <form  class="form-horizontal" id="form_cat" method="post">
                 <div class="modal-body">
-                    <div class="form-group"><label class="col-sm-3 control-label">Company Name</label>
+                    <div class="form-group"><label class="col-sm-3 control-label">Category Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="name" placeholder="Enter Manufacture Company Name" >
+                            <input type="text" class="form-control" name="name" placeholder="Enter Category Name" >
                         </div>
                     </div>
                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                <button type="submit" id="supplier_button"   class="btn btn-primary">Save changes</button>
+                <button type="submit" id="cat_button"   class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -103,12 +103,12 @@
     });
     //Create supplier
 $(document).ready(function(){
-        $("#form_manufactur").submit(function(){
-            $('#companModal').modal('hide');
-            var data = $("#form_manufactur").serialize();
+        $("#form_cat").submit(function(){
+            $('#catModal').modal('hide');
+            var data = $("#form_cat").serialize();
             console.log(data);
             $.ajax({
-                url: "<?php echo base_url()?>index.php/Procurement/addManufactur",
+                url: "<?php echo base_url()?>index.php/Procurement/addCategory",
                 data: data,
                 type: 'post',
                 dataType: "json",
@@ -117,10 +117,10 @@ $(document).ready(function(){
                     var tr;
                    $.each(data,function(i,o){
                         tr = $('<tr/>');
-                        tr.append("<td>" + o.manu_company + "</td>");
+                        tr.append("<td>" + o.cat_name + "</td>");
                        
                         tr.append(
-                            '<td><button class="btn btn-danger" id="supDelete" onclick="deleteManufactur('+o.id+')"><i class="fa fa-trash"></i></span></button></td>'
+                            '<td><button class="btn btn-danger" id="supDelete" onclick="deleteCategory('+o.id+')"><i class="fa fa-trash"></i></span></button></td>'
                             );
                         $('table').prepend(tr);     
                    });
@@ -133,12 +133,12 @@ $(document).ready(function(){
         });
     });
         
-    function deleteManufactur(id)
+    function deleteCategory(id)
         {
           if(confirm('Are you sure to delete this?'))
           {
               $.ajax({
-                url : "<?php echo base_url()?>index.php/Procurement/deleteManufactur/"+id,
+                url : "<?php echo base_url()?>index.php/Procurement/deleteCategory/"+id,
                 type: "POST",
                 success: function(data) {
                   if(data=='success'){
