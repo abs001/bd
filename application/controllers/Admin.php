@@ -128,4 +128,59 @@ class Admin extends CI_Controller {
 		$result = $this->AdminModel->deleteEmployee($id);
 		echo json_encode($result);
 	}
+	// USER Controller functions...
+	public function createUser(){
+		$data['pagename'] = "CreateUser";
+		$data['active_menu'] = "employee";
+		$data['department'] = $this->AdminModel->getDepartment();//get options in '<select></select>' tag
+		$data['employee'] = $this->AdminModel->getEmployee();//get opftions in '<select></select>' tag
+		$data['employeeResult'] = $this->AdminModel->createUser();
+		$this->load->view('Director',$data);
+	}
+	public function saveUser(){
+		$data['username'] = $this->input->post('username');
+		$data['department'] = $this->input->post('department');
+		$data['password'] = rand(111111,999999);
+		$data['employee_name'] = $this->input->post('employee_name');
+		$data['lab_unit'] = $this->input->post('lab_unit');
+		$data['emailid'] = $this->input->post('emailid');
+		$data['phone'] = $this->input->post('phone');
+		$data['mobile'] = $this->input->post('mobile');
+		$data['usertype'] = $this->input->post('usertype');
+		$result = $this->AdminModel->saveUser($data);
+		echo json_encode($result);	
+	}
+	public function checkUserName($username){ //Check user available or not
+		$result = $this->AdminModel->checkUserName($username);
+		echo json_encode($result);
+	}
+	public function userEdit($id){
+		$result = $this->AdminModel->userEdit($id);
+		echo json_encode($result);
+	}
+	public function updateUser(){
+		$data['id'] = $this->input->post('id');
+		$data['department'] = $this->input->post('department');
+		$data['employee_name'] = $this->input->post('employee_name');
+		$data['lab_unit'] = $this->input->post('lab_unit');
+		$data['emailid'] = $this->input->post('emailid');
+		$data['phone'] = $this->input->post('phone');
+		$data['mobile'] = $this->input->post('mobile');
+		$data['usertype'] = $this->input->post('usertype');
+		$result = $this->AdminModel->updateUser($data);
+		echo json_encode($result);	
+	}
+	public function deleteUser($id){
+		$result = $this->AdminModel->deleteUser($id);
+		echo json_encode($id);
+	}
+	// Assign Role
+	public function assignRole(){
+		$data['pagename'] = "assignrole";
+		$data['active_menu'] = "employee";
+		$data['role'] = $this->AdminModel->getRole();
+		$data['employee'] = $this->AdminModel->getEmployee();//get opftions in '<select></select>' tag
+		// $data['employeeResult'] = $this->AdminModel->createUser();
+		$this->load->view('Director',$data);
+	}
 }

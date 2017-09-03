@@ -92,6 +92,15 @@ class AdminModel extends CI_Model {
 		$result = $this->db->get('department')->result_array();
 		return $result;
 	}
+	public function getEmployee(){
+		// $this->db->select('name','id');
+		$result = $this->db->get('employee')->result_array();
+		return $result;
+	}
+	public function getRole(){
+		$result = $this->db->get('role')->result_array();
+		return $result;
+	}
 	public function createEmployee(){ //Return all employees while loading page
 		$this->db->order_by('id','desc');
 		$result = $this->db->get('employee')->result_array(); 
@@ -126,6 +135,57 @@ class AdminModel extends CI_Model {
 	public function deleteEmployee($id){
 		$this->db->where('id',$id);
 		$this->db->delete('employee');
+		if($this->db->affected_rows()>0){
+			$result = "success";	
+		}else{
+			$result = "failed";	
+		}
+		return $result;
+	}
+	// USER MODEL functions...
+	public function createUser(){ 
+		$this->db->order_by('id','desc');
+		$result = $this->db->get('user')->result_array(); 
+		return $result;	
+	}
+	public function saveUser($data){
+		$this->db->insert('user',$data);
+		if($this->db->affected_rows()>0){
+			$this->db->order_by('id','desc');
+			$this->db->limit(1);
+			$result = $this->db->get('user')->result_array();
+			return $result;
+		}else{
+			$result = "failed";	
+		}
+	}
+	public function checkUserName($username){
+		$this->db->get_where('user',array('username'=>$username))->result_array();
+		if($this->db->affected_rows()>0){
+			$result = "unavailable";
+		}else{
+			$result = "available";	
+		}
+		return $result;
+	}
+	public function userEdit($id){
+		$result = $this->db->get_where('user',array('id' => $id))->result_array();
+		return $result;
+	}
+	public function updateUser($data){
+		$id = $data['id'];
+		$this->db->where('id', $id);
+		$this->db->update('user',$data);
+		if($this->db->affected_rows()>0){
+			$result = "success";
+		}else{
+			$result = "failed";	
+		}
+		return $result;
+	}
+	public function deleteUser($id){
+		$this->db->where('id',$id);
+		$this->db->delete('user');
 		if($this->db->affected_rows()>0){
 			$result = "success";	
 		}else{

@@ -31,6 +31,12 @@
 	  	 	if ($pagename == "manufactur") {
 	  	 		$this->load->view('Home/Manufactur'); 
 	  	 	}
+	  	 	if ($pagename == "CreateUser") {
+	  	 		$this->load->view('Home/CreateUser'); 
+	  	 	}
+	  	 	if ($pagename == "assignrole") {
+	  	 		$this->load->view('Home/AssignRole'); 
+	  	 	}
 	    ?>
 	    </div>
 	    <script>

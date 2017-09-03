@@ -6,7 +6,7 @@
             <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Employee / All Departments</h5>
-                        <div class="text-center">    
+                        <div class="text-right">    
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#roleModal">
                                 Add Department
                             </button>

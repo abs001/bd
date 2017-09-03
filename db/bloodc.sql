@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2017 at 01:46 AM
+-- Generation Time: Sep 03, 2017 at 04:40 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `designation` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `designation`
@@ -86,7 +86,8 @@ CREATE TABLE IF NOT EXISTS `designation` (
 INSERT INTO `designation` (`id`, `name`, `description`) VALUES
 (2, 'designation1', 'desg1'),
 (5, 'designation2', 'dasdf'),
-(6, 'designation3', 'ASFSDFasd');
+(6, 'designation3', 'ASFSDFasd'),
+(7, 'my designation', 'designation desc');
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `qualification` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `employee`
@@ -118,7 +119,10 @@ INSERT INTO `employee` (`id`, `department`, `name`, `address`, `email`, `mobile`
 (1, 'Dignostic center', 'Abhijit Gorakhanath Kumbhar', '"Aashirwad"\r\nBelawade BK', 'abhijitkumbhar001@gmail.com', '8793539225', '09168277713', '1993-05-31', 'designation1', 'MBBSs', 'Consultant'),
 (2, 'Procurement', 'Ashish A Desai', 'Miraj', 'desaiashish212@gmail.com', '9876543210', '0987654321', '1992-05-19', 'designation1', 'BBMS', 'Reference'),
 (3, 'Radiology', 'Hanmant Kadam', 'Kadegaon, Sangali', 'hanmant@gmail.com', '9898989876', '098765432190', '2013-11-04', 'designation3', 'BBMS', 'Reference'),
-(6, 'myDept', 'hemant', 'kolhapur', 'hemant@gmail.com', '0989098989', '989098909890', '1988-12-26', 'designation2', 'BDS', 'Consultant');
+(9, 'select', 'new Emp', 'asdfj', 'admin@bloodclinic.org', '5878888888', '7896541230212', '2009-02-02', 'designation2', 'asdf', 'Reference'),
+(10, 'myDept', 'sadkj', 'sakjdf', 'ksjd@fjla.com', '9168277713', '09168277713', '2008-12-28', 'designation2', 'aa', 'Consultant'),
+(11, 'myDept', 'somedept', 'skdjflk', 'sldjflk@a.com', 'jkalsjdf', 'slkdfj', '2005-07-14', 'designation1', 'asdf', 'Consultant'),
+(8, 'dept1', 'balya', 'ahamadnagar', 'balu@kalu.com', '8798654130', '9874556321000', '2013-05-13', 'designation2', 'MBBS', 'Consultant');
 
 -- --------------------------------------------------------
 
@@ -196,6 +200,45 @@ INSERT INTO `supplier` (`id`, `sup_name`, `address`, `city`, `telephone`, `fax_n
 (7, 'Hanmat Kadam', 'Hingane', 'Pune', '89789e7657', '5575', 'hanmant@gmail.com', 'www.hk.com', '2017-08-31 18:25:26'),
 (8, 'hghj', 'hjbjh', 'jh', 'kjhk', 'jbkq', 'jhgj', 'hjbgjg', '2017-09-02 02:38:17'),
 (9, 'new supplier', 'pune', 'pune', '98765433100', '1234-1245-1245', 'abhijitkumbhar@gmail.com', 'www.google.cpm', '2017-09-02 17:39:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` text COLLATE utf8_unicode_ci NOT NULL,
+  `department` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `employee_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `lab_unit` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `emailid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
+  `mobile` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `usertype` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `department`, `employee_name`, `lab_unit`, `emailid`, `phone`, `mobile`, `usertype`, `role`) VALUES
+(1, 'abs001', '3477', 'myDept', 'Abhijit Gorakhanath Kumbhar', 'unit1', 'abhijit@gmail.com', '989875134', '9168277713', 'Consultant', ''),
+(2, 'abs001', '2858', 'myDept', 'Abhijit Gorakhanath Kumbhar', 'unit1', 'abhijit@gmail.com', '989875134', '9168277713', 'Consultant', ''),
+(3, 'ashish', '5182', 'anotherDept', 'Ashish A Desai', 'unit2', 'ashish@gmail.com', '9876543210', '9168277713', 'Reference', ''),
+(4, 'user1', '821858', 'myDept', 'hemant', 'unit1', 'hemant@gmail.com', '9168277713', '9168277713', 'Consultant', ''),
+(5, 'user2', '466010', 'anotherDept', 'Hanmant Kadam', 'unit123', 'abhijit@gmail.com', '9168277713', '9168277713', 'Reference', ''),
+(10, 'some1', '564425', 'myDept', 'hemant', 'labunit', 'ashish@gmail.com', '9168277713', '9168277713', 'Reference', ''),
+(11, 'myUser', '519341', 'myDept', 'hemant', 'unit10', 'user@gmail.com', '9876543210', '9168277713', 'Other', ''),
+(9, 'user', '741753', 'myDept', 'Hanmant Kadam', 'some unit', 'abhijit@gmail.com', '9168277713', '9168277713', 'Other', ''),
+(12, 'mytemp', '929199', 'myDept', 'Hanmant Kadam', 'unit123', 'abhijit@gmail.com', '9168277713', '9168277713', 'Consultant', ''),
+(13, 'myuser1', '312038', 'dept1', 'Ashish A Desai', 'asdf', 'ashish@gmail.com', '9168277713', '8793539225', 'Other', ''),
+(16, 'asd', '315646', 'dept1', 'Ashish A Desai', 'unit1', 'abhijit@gmail.com', '9168277713', '9168277713', 'Consultant', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

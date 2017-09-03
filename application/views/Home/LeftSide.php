@@ -28,6 +28,7 @@
         <li><a href="<?php echo base_url();?>index.php/Admin/role">Role</a></li>
         <li><a href="<?php echo base_url();?>index.php/Admin/department">Departments</a></li>
         <li><a href="<?php echo base_url();?>index.php/Admin/designation">Designations</a></li>
+        <li><a href="<?php echo base_url();?>index.php/Admin/assignRole">Assign role</a></li>
                         </ul>
                     </li>
                     <li id="procurement">
