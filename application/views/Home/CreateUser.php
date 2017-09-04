@@ -26,6 +26,7 @@
                         <th>Telephone</th>
                         <th>Mobile</th>
                         <th>Type</th>
+                        <th>Role</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -44,6 +45,7 @@
         <td><?php echo $value['phone']?></td>
         <td><?php echo $value['mobile']?></td>
         <td><?php echo $value['usertype']?></td>
+        <td><?php echo $value['role']?></td>
         <td>
 <button class="btn btn-warning" id="userEdit" data-toggle="modal" onclick="userEdit(<?php echo $value['id']?>);" data-target="#editUserModal"><i class="fa fa-pencil"></i></span></button></td>
         <td><button class="btn btn-danger" id="userDelete" onclick="deleteUser(<?php echo $value['id']?>)"><i class="fa fa-trash"></i></span></button></td>
@@ -276,6 +278,7 @@
                         tr.append("<td>" + o.phone + "</td>");
                         tr.append("<td>" + o.mobile + "</td>");
                         tr.append("<td>" + o.usertype + "</td>");
+                        tr.append("<td></td>");
                         tr.append(
 '<td><button class="btn btn-warning" id="userEdit" data-toggle="modal" onclick="userEdit('+o.id+');" data-target="#editUserModal"><i class="fa fa-pencil"></i></span></button></td>'
                             );

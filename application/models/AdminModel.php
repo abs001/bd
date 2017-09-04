@@ -97,6 +97,11 @@ class AdminModel extends CI_Model {
 		$result = $this->db->get('employee')->result_array();
 		return $result;
 	}
+	public function getUser(){
+		// $this->db->select('name','id');
+		$result = $this->db->get('user')->result_array();
+		return $result;
+	}
 	public function getRole(){
 		$result = $this->db->get('role')->result_array();
 		return $result;
@@ -188,6 +193,17 @@ class AdminModel extends CI_Model {
 		$this->db->delete('user');
 		if($this->db->affected_rows()>0){
 			$result = "success";	
+		}else{
+			$result = "failed";	
+		}
+		return $result;
+	}
+	public function assignRoleSave($data){
+		$id = $data['id'];
+		$this->db->where('id', $id);
+		$this->db->update('user',$data);
+		if($this->db->affected_rows()>0){
+			$result = "success";
 		}else{
 			$result = "failed";	
 		}

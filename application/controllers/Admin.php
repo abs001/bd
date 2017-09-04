@@ -179,8 +179,14 @@ class Admin extends CI_Controller {
 		$data['pagename'] = "assignrole";
 		$data['active_menu'] = "employee";
 		$data['role'] = $this->AdminModel->getRole();
-		$data['employee'] = $this->AdminModel->getEmployee();//get opftions in '<select></select>' tag
+		$data['employee'] = $this->AdminModel->getUser();
 		// $data['employeeResult'] = $this->AdminModel->createUser();
 		$this->load->view('Director',$data);
+	}
+	public function assignRoleSave($id,$roleName){
+		$data['id'] = $id;
+		$data['role'] = $roleName;		
+		$result = $this->AdminModel->assignRoleSave($data);
+		echo json_encode($result);
 	}
 }

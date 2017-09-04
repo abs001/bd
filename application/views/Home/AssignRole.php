@@ -13,10 +13,11 @@
                     <table class="table table-striped employee" id="employeeTable" >
                     <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Employee Name</th>
                         <th>Department</th>
                         <th>Mobile</th>
-                        <th>Email</th>
+                        <!-- <th>Email</th> -->
                     </tr>
                     </thead>
                     <tbody>
@@ -24,10 +25,11 @@
                 foreach ($employee as $value) {
             ?>
                 <tr class="gradeX">
-                    <td><?php echo $value['name']?></td>
+                    <td id="empid"><?php echo $value['id']?></td>
+                    <td><?php echo $value['employee_name']?></td>
                     <td><?php echo $value['department']?></td>
                     <td><?php echo $value['mobile']?></td>
-                    <td><?php echo $value['email']?></td>
+                    <!-- <td><?php echo $value['email']?></td> -->
                 </tr>
             <?php
                 }
@@ -47,7 +49,7 @@
         <div class="ibox-content">
             <div class="table-responsive">
                     <h5 class="text-warning">STEP 2 : Click role</h5><hr>
-                    <table class="table table-striped" id="roleTable" >
+                    <table class="table table-striped role" id="roleTable" >
                     <thead>
                     <tr>
                         <th>Role</th>
@@ -58,7 +60,7 @@
                             foreach ($role as $value) {
                         ?>
                             <tr class="gradeX" id="roleData">
-                                <td><?php echo $value['name']?></td>
+                                <td id="roleName"><?php echo $value['name']?></td>
                             </tr>
                         <?php
                             }
@@ -93,13 +95,41 @@
 <!-- Custom and plugin javascript -->
 <script src="<?php echo base_url();?>assets/js/inspinia.js"></script>
 <script src="<?php echo base_url();?>assets/js/plugins/pace/pace.min.js"></script>
+<!-- Toastr script -->
+<script src="<?php echo base_url();?>assets/js/plugins/toastr/toastr.min.js"></script>
 <script>
     $(document).ready(function(){
-
+        // 
     });
+    var empid = "";
+    var roleName = "";
     $('.employee tr').click(function() {
-       // var id = $(this).attr('id');
-       $(this).css('backgroundColor', 'rgba(139, 195, 74, 0.35)');
+       $('.employee tr').removeAttr("id","selectedEmp"); 
+       $('.employee tr').removeAttr('style');
        $(this).attr("id","selectedEmp"); 
+       $(this).css('backgroundColor', 'rgba(139, 195, 74, 0.35)');
+       empid = $("#selectedEmp #empid").text();
+    });
+    $('.role tr').click(function() {
+       $('.role tr').removeAttr("id","selectedRole"); 
+       $('.role tr').removeAttr('style');
+       $(this).attr("id","selectedRole"); 
+       $(this).css('backgroundColor', 'rgba(139, 195, 74, 0.35)');
+       roleName = $("#selectedRole #roleName").text();
+    });
+    $('#saveRole').click(function(){
+        $.ajax({
+            url: "<?php echo base_url()?>index.php/Admin/assignRoleSave/"+empid+"/"+roleName,
+                type: 'post',
+                dataType: "json",
+                success: function(data) {
+                    alert("Role "+roleName+" assigned to id: "+empid);
+                },
+                error: function(data){
+                    console.log(data);
+                },
+
+        });
+
     });
 </script>
