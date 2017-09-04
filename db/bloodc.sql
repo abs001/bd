@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2017 at 04:42 AM
+-- Generation Time: Sep 04, 2017 at 08:30 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -52,14 +52,56 @@ CREATE TABLE IF NOT EXISTS `category` (
   `cat_name` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `cat_name`, `created_at`) VALUES
-(3, 'Drug', '2017-09-02 14:34:02');
+(4, 'General', '2017-09-04 18:23:57'),
+(5, 'Impression', '2017-09-04 18:24:10'),
+(6, 'Advised', '2017-09-04 18:24:38'),
+(7, 'Received', '2017-09-04 18:24:56'),
+(8, 'Note', '2017-09-04 18:25:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `collection_center`
+--
+
+CREATE TABLE IF NOT EXISTS `collection_center` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` text COLLATE utf8_unicode_ci NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `state` text COLLATE utf8_unicode_ci NOT NULL,
+  `city` text COLLATE utf8_unicode_ci NOT NULL,
+  `pincode` text COLLATE utf8_unicode_ci NOT NULL,
+  `email` text COLLATE utf8_unicode_ci NOT NULL,
+  `phone` text COLLATE utf8_unicode_ci NOT NULL,
+  `mobile` text COLLATE utf8_unicode_ci NOT NULL,
+  `doctor_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `lab_unit` text COLLATE utf8_unicode_ci NOT NULL,
+  `rate_type` text COLLATE utf8_unicode_ci NOT NULL,
+  `deposit_amount` text COLLATE utf8_unicode_ci NOT NULL,
+  `deposit` text COLLATE utf8_unicode_ci NOT NULL,
+  `login` text COLLATE utf8_unicode_ci NOT NULL,
+  `password` text COLLATE utf8_unicode_ci NOT NULL,
+  `default_client` int(11) NOT NULL DEFAULT '0',
+  `direct_cash_bill_flag` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `collection_center`
+--
+
+INSERT INTO `collection_center` (`id`, `code`, `name`, `address`, `state`, `city`, `pincode`, `email`, `phone`, `mobile`, `doctor_name`, `lab_unit`, `rate_type`, `deposit_amount`, `deposit`, `login`, `password`, `default_client`, `direct_cash_bill_flag`, `created_at`) VALUES
+(5, 'ADS123', 'Desai Center', 'Miraj', 'Maharashtra', 'Sangli', '416410', 'desai@gmail.com', '8478324983792', '2893742386492', 'Dr. Ashish desai', 'Sonography', 'MRP', '10000', '10', 'ashish', '12345', 0, 0, '2017-09-04 15:20:05'),
+(6, 'ABS987', 'Kumbhar Center', 'Karad', 'Maharashtra', 'Satara', '416257', 'kumbhar@gmail.com', '53238374628', '873248739', 'Dr. Abhijit Kumbhar', 'value', '', '20000', '10', 'abhijit', '54321', 0, 0, '2017-09-04 15:21:40');
 
 -- --------------------------------------------------------
 
@@ -120,15 +162,16 @@ CREATE TABLE IF NOT EXISTS `drug` (
   `reorder_level` text COLLATE utf8_unicode_ci NOT NULL,
   `created_id` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `drug`
 --
 
 INSERT INTO `drug` (`id`, `drug_name`, `category`, `unit_pack`, `reorder_level`, `created_id`) VALUES
-(2, 'dsjklj', 'Drug', 'k;lk', 'lkl;k', '2017-09-02 15:37:44'),
-(3, 'jhjk', 'Drug', 'kl;k', 'lk;lk;lk', '2017-09-02 15:40:21');
+(4, ' Abciximab', 'Drug', '50', '1', '2017-09-04 17:46:08'),
+(5, 'Asparaginase', 'Drug', '100', '2', '2017-09-04 17:46:34'),
+(6, 'Aspartame', 'Drug', '70', '3', '2017-09-04 17:46:53');
 
 -- --------------------------------------------------------
 
@@ -167,6 +210,42 @@ INSERT INTO `employee` (`id`, `department`, `name`, `address`, `email`, `mobile`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `invoice`
+--
+
+CREATE TABLE IF NOT EXISTS `invoice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `po_no` text COLLATE utf8_unicode_ci NOT NULL,
+  `po_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `Invoice_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `invoice_no` text COLLATE utf8_unicode_ci NOT NULL,
+  `supplier_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `item` text COLLATE utf8_unicode_ci NOT NULL,
+  `batch_no` text COLLATE utf8_unicode_ci NOT NULL,
+  `per` text COLLATE utf8_unicode_ci NOT NULL,
+  `unit_pack` text COLLATE utf8_unicode_ci NOT NULL,
+  `pack` text COLLATE utf8_unicode_ci NOT NULL,
+  `total_units` text COLLATE utf8_unicode_ci NOT NULL,
+  `cost` text COLLATE utf8_unicode_ci NOT NULL,
+  `total_amount` text COLLATE utf8_unicode_ci NOT NULL,
+  `free_units` text COLLATE utf8_unicode_ci NOT NULL,
+  `expiry_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `mfg_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `mfg_company` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `invoice`
+--
+
+INSERT INTO `invoice` (`id`, `po_no`, `po_date`, `Invoice_date`, `invoice_no`, `supplier_name`, `item`, `batch_no`, `per`, `unit_pack`, `pack`, `total_units`, `cost`, `total_amount`, `free_units`, `expiry_date`, `mfg_date`, `mfg_company`, `created_at`) VALUES
+(1, 'klsdjlk', 'kljkl', '09/05/2017', '23456', 'Ashish Desai', 'Omee', '34567', 'jl', '9', '23', '454', 'kljkl', '54556', '5456', '09/04/2017', '09/02/2017', 'Cipla', '2017-09-04 09:44:13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
@@ -200,7 +279,37 @@ INSERT INTO `item` (`id`, `item_name`, `manu_company`, `category`, `supplier`, `
 (1, 'nsdnaj', 'Cipla', 'kljklj', 'Abhijit kumbhar', 'jhjh', '10/11/2013', 'jhjk', 'jhjhjk', 'jlkl', 'Start', '10/11/2013', 'lkl;k', 'lk', 'l;k;lk', 'k;l', 'k;lkl;k', '2017-09-02 13:25:11'),
 (2, 'nsdnaj', 'Cipla', 'kljklj', 'Abhijit kumbhar', 'jhjh', '10/11/2013', 'jhjk', 'jhjhjk', 'jlkl', 'Start', '10/11/2013', 'lkl;k', 'lk', 'l;k;lk', 'k;l', 'k;lkl;k', '2017-09-02 13:26:20'),
 (3, 'Omee', 'Cipla', 'Drug', 'Abhijit kumbhar', '23', '09/02/2017', '34', '9', '67', 'Start', '10/11/2013', '34567', '76876', '7687', '6786', '786786786', '2017-09-02 15:04:22'),
-(4, 'dhjkahs', 'Indofar', 'Drug', 'Abhijit kumbhar', 'mjlkjkl', '09/02/2017', 'kjlk', 'jkljklj', 'lkjkljlk', 'Start', '09/02/2017', '34567', '56789', '6789', '6789', '67890', '2017-09-02 15:06:45');
+(4, 'dhjkahs', 'abs', 'Drug', 'Hanmat Kadam', 'mjlkjkl', '03/30/2012', '', 'jkljklj', 'lkjkljlk', 'Pending', '01/08/2021', '34567', '56789', '6789', '6789', '67890', '2017-09-02 15:06:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lab`
+--
+
+CREATE TABLE IF NOT EXISTS `lab` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` text COLLATE utf8_unicode_ci NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `city` text COLLATE utf8_unicode_ci NOT NULL,
+  `state` text COLLATE utf8_unicode_ci NOT NULL,
+  `country` text COLLATE utf8_unicode_ci NOT NULL,
+  `pincode` text COLLATE utf8_unicode_ci NOT NULL,
+  `email` text COLLATE utf8_unicode_ci NOT NULL,
+  `web` text COLLATE utf8_unicode_ci NOT NULL,
+  `phone` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `lab`
+--
+
+INSERT INTO `lab` (`id`, `code`, `name`, `address`, `city`, `state`, `country`, `pincode`, `email`, `web`, `phone`, `created_at`) VALUES
+(1, 'AD1', 'X-Ray', 'Hingne', 'Pune', 'Maharashtra', 'India', '411051', 'desaiashish212@gmail.com', 'www.ads.com', '123456789765', '2017-09-04 11:00:42'),
+(2, 'AK1', 'Sonography', 'Pimpary Chinchvad', 'Pune', 'Maharashtra', 'India', '412123', 'abs@gmail.com', 'www.abs.com', '264926316472', '2017-09-04 11:05:09');
 
 -- --------------------------------------------------------
 
@@ -244,14 +353,36 @@ CREATE TABLE IF NOT EXISTS `purchase_order` (
   `status` int(11) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `purchase_order`
 --
 
 INSERT INTO `purchase_order` (`id`, `po_no`, `ref_no`, `po_date`, `item`, `cost`, `per`, `quantity`, `amount`, `current_stock`, `status`, `created_at`) VALUES
-(6, 'knk', 'kln', 'k', 'kn', 'kln', 'lkn', 'kln', 'lknlknkl', 'nlkn', 1, '2017-09-02 17:57:33');
+(7, 'klsdjlk', 'j', 'kljkl', 'Omee', 'kljkl', 'jl', 'kj', 'klj', 'kljkl', 1, '2017-09-03 02:58:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ratetype`
+--
+
+CREATE TABLE IF NOT EXISTS `ratetype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rate_code` text COLLATE utf8_unicode_ci NOT NULL,
+  `rate_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `ratetype`
+--
+
+INSERT INTO `ratetype` (`id`, `rate_code`, `rate_name`, `created_at`) VALUES
+(2, '', 'MRP', '2017-09-04 17:33:20'),
+(5, '', 'OutSource', '2017-09-04 23:50:47');
 
 -- --------------------------------------------------------
 
@@ -293,17 +424,16 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `web` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`id`, `sup_name`, `address`, `city`, `telephone`, `fax_no`, `email`, `web`, `created_at`) VALUES
-(6, 'Abhijit kumbhar', 'Pimpari', 'Pune', '938427340098', '32647236934993', 'abs@gmail.com', 'www.abs.com', '2017-08-31 18:06:43'),
-(7, 'Hanmat Kadam', 'Hingane', 'Pune', '89789e7657', '5575', 'hanmant@gmail.com', 'www.hk.com', '2017-08-31 18:25:26'),
-(8, 'hghj', 'hjbjh', 'jh', 'kjhk', 'jbkq', 'jhgj', 'hjbgjg', '2017-09-02 02:38:17'),
-(9, 'new supplier', 'pune', 'pune', '98765433100', '1234-1245-1245', 'abhijitkumbhar@gmail.com', 'www.google.cpm', '2017-09-02 17:39:27');
+(7, 'Hanmat Kadam', 'Hingane', 'Pune', '89789e7657', '5575', 'hanmant123@gmail.com', 'www.hk.com', '2017-08-31 18:25:26'),
+(11, 'Abhijit kumbhar', 'Pimpari', 'Pune', '89789e7657', '2634726', 'abs@gmail.com', 'www.abs.com', '2017-09-04 17:21:52'),
+(12, 'Ashish Desai', 'Hingane', 'Pune', '38247928736482788', '328649283', 'ashishdesai143@gmail.com', 'www.ads.com', '2017-09-04 17:22:31');
 
 -- --------------------------------------------------------
 
@@ -331,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `department`, `employee_name`, `lab_unit`, `emailid`, `phone`, `mobile`, `usertype`, `role`) VALUES
-(1, 'abs001', '3477', 'myDept', 'Abhijit Gorakhanath Kumbhar', 'unit1', 'abhijit@gmail.com', '989875134', '9168277713', 'Consultant', ''),
+(1, 'abs001', '3477', 'myDept', 'Abhijit Gorakhanath Kumbhar', 'unit1', 'abhijit@gmail.com', '989875134', '9168277713', 'Consultant', 'Doctor'),
 (2, 'abs001', '2858', 'myDept', 'Abhijit Gorakhanath Kumbhar', 'unit1', 'abhijit@gmail.com', '989875134', '9168277713', 'Consultant', ''),
 (3, 'ashish', '5182', 'anotherDept', 'Ashish A Desai', 'unit2', 'ashish@gmail.com', '9876543210', '9168277713', 'Reference', ''),
 (4, 'user1', '821858', 'myDept', 'hemant', 'unit1', 'hemant@gmail.com', '9168277713', '9168277713', 'Consultant', ''),
