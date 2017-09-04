@@ -109,7 +109,7 @@
                         <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" class="form-control" value="10/11/2013" name="mfg_date" id="mfg_date">
+                            <input type="text" class="form-control" value="10/11/2013" name="mfg_date">
                         </div>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Edit Supplier Details</h4>
             </div>
-        <form  class="form-horizontal" id="form_item" method="post">
+        <form  class="form-horizontal" id="form_edit_item" method="post">
                 <div class="modal-body">
                     <div class="form-group"><label class="col-sm-3 control-label">Item Name*</label>
                         <div class="col-sm-9">
@@ -209,8 +209,8 @@
 
                     <div class="form-group"><label class="col-sm-3 control-label">Mfg Co. Name</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="mfgco" id="mfgco">
-                                <option>Select Company</option>
+                            <select class="form-control" name="mfgco" >
+                                <option id="mfgco1"></option>
                                 <?php foreach($mfgco as $value){?>
                                     <option value="<?php echo $value['manu_company'];?>"><?php echo $value['manu_company'];?></option>
                                  <?php }?>   
@@ -226,8 +226,8 @@
 
                     <div class="form-group"><label class="col-sm-3 control-label">Supplier</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="supplier" id="supplier">
-                                <option>Select Supplier</option>
+                            <select class="form-control" name="supplier">
+                                <option id="supplier"></option>
                                 <?php foreach($supplier as $value){?>
                                     <option value="<?php echo $value['sup_name'];?>"><?php echo $value['sup_name'];?></option>
                                  <?php }?>   
@@ -240,14 +240,15 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="data_3"><label class="col-sm-3 control-label">MFg Date</label>
+                     <div class="form-group" id="data_3"><label class="col-sm-3 control-label">MFg Date</label>
                         <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" class="form-control" name="mfg_date" id="mfg_date">
+                            <input type="text" class="form-control" name="mfg_date" id="mfg_date1">
                         </div>
                         </div>
                     </div>
+
 
                     <div class="form-group"><label class="col-sm-3 control-label">Recorder Level</label>
                         <div class="col-sm-9">
@@ -269,8 +270,8 @@
 
                     <div class="form-group"><label class="col-sm-3 control-label">Expiry Status*</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="expiry_status" id="expiry_status">
-                                <option>Select Status</option>
+                            <select class="form-control" name="expiry_status">
+                                <option id="expiry_status1"></option>
                                 <option>Pending</option>
                                 <option>Processed</option>   
                                 <option>Partial Processed</option>   
@@ -282,7 +283,7 @@
                         <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" class="form-control" value="10/11/2013" name="purchase_date" id="purchase_date">
+                            <input type="text" class="form-control" name="purchase_date" id="purchase_date">
                         </div>
                         </div>
                     </div>
@@ -316,7 +317,7 @@
                             <input type="text" class="form-control" name="sell_price" id="sell" placeholder="Enter Selling Price Per Unit" >
                         </div>
                     </div>
-
+                    <input type="hidden" name="id" id="id">
                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -401,6 +402,27 @@ $(document).ready(function(){
             });
             return false;
         });
+
+        //Update
+        $("#form_edit_item").submit(function(){
+            $('#editItemModal').modal('hide');
+            var data = $("#form_edit_item").serialize();
+            $.ajax({
+                url: "<?php echo base_url()?>index.php/Procurement/updateItem",
+                data: data,
+                type: 'post',
+                dataType: "json",
+                success: function(data) {
+                    location.reload();
+                },
+               error:function(data){
+                    console.log("err1:"+JSON.stringify(data));
+                }     
+            });
+            return false;
+        });
+
+
     });
         
     function deleteItem(id)
@@ -436,7 +458,7 @@ $(document).ready(function(){
             type: 'post',
             dataType: 'json',
             success:function(data){
-                console.log("data: "+data[0].email);
+                console.log("data: "+data[0].supplier);
                 var id = data[0].id;
                 var item_name = data[0].item_name;
                 var manu_company = data[0].manu_company;
@@ -456,15 +478,15 @@ $(document).ready(function(){
                 //Set data to Modal
                 $('#id').attr("value",id);
                 $('#name').attr("value",item_name);
-                $('#mfgco').html("value",manu_company);
+                $('#mfgco1').html("value",data[0].manu_company);
                 $('#category').attr("value",category);
-                $('#supplier').attr("value",supplier);
+                $('#supplier').html("value",supplier);
                 $('#stock').attr("value",current_stock);
-                $('#mfg_date').html("value",mfg_date);
+                $('#mfg_date1').html("value",mfg_date);
                 $('#reorder_level').attr("value",reorder_level);
                 $('#unit').attr("value",unit);
                 $('#cost').attr("value",cost);
-                $('#expiry_status').attr("value",expiry_status);
+                $('#expiry_status1').html("value",expiry_status);
                 $('#batch_no').attr("value",batch_no);
                 $('#ida_code').attr("value",ida_code);
                 $('#barcode').attr("value",barcode);

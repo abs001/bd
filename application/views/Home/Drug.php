@@ -106,7 +106,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Drug</h4>
             </div>
-        <form  class="form-horizontal" id="form_drug" method="post">
+        <form  class="form-horizontal" id="form_edit_drug" method="post">
                 <div class="modal-body">
                     <div class="form-group"><label class="col-sm-3 control-label">Drug Name</label>
                         <div class="col-sm-9">
@@ -116,8 +116,8 @@
                
                <div class="form-group"><label class="col-sm-3 control-label">Category</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="category" id="category">
-                                <option>Select Category</option>
+                            <select class="form-control" name="category" >
+                                <option id="category1"></option>
                                 <?php foreach($cat as $value){?>
                                     <option value="<?php echo $value['cat_name'];?>"><?php echo $value['cat_name'];?></option>
                                  <?php }?>   
@@ -138,7 +138,7 @@
                             <input type="text" class="form-control" name="reorder_level" id="reorder_level" placeholder="Enter Reorder Level" >
                         </div>
                     </div>
-               
+               <input type="hidden" name="id" id="id">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                 <button type="submit" id="cat_button"   class="btn btn-primary">Save</button>
@@ -219,6 +219,25 @@ $(document).ready(function(){
             });
             return false;
         });
+
+        $("#form_edit_drug").submit(function(){
+            $('#editDrugModal').modal('hide');
+            var data = $("#form_edit_drug").serialize();
+            $.ajax({
+                url: "<?php echo base_url()?>index.php/Procurement/updateDrug",
+                data: data,
+                type: 'post',
+                dataType: "json",
+                success: function(data) {
+                    location.reload();
+                },
+               error:function(data){
+                    console.log("err1:"+JSON.stringify(data));
+                }     
+            });
+            return false;
+        });
+
     });
         
     function deleteDrug(id)
@@ -256,14 +275,10 @@ $(document).ready(function(){
             dataType: 'json',
             success:function(data){
                 
-                var id = data[0].id;
-                var item_name = data[0].item_name;
-                var manu_company = data[0].manu_company;
-                var category = data[0].category;
-                
+            
                 $('#id').attr("value",data[0].id);
                 $('#name').attr("value",data[0].drug_name);
-                $('#category').html("value",data[0].category);
+                $('#category1').html("value",data[0].category);
                 $('#units').attr("value",data[0].unit_pack);
                 $('#reorder_level').attr("value",data[0].reorder_level);
                 

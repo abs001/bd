@@ -62,8 +62,8 @@
                                     <li id="drug">
                                         <a href="<?php echo base_url()."index.php/Procurement/drug";?>">Drug</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Invoice</a>
+                                    <li id="invoice">
+                                        <a href="<?php echo base_url()."index.php/Procurement/Invoice";?>">Invoice</a>
                                     </li>
                                     <li>
                                         <a href="#">Stock Adjustment</a>
@@ -85,6 +85,141 @@
                             </li>
                         </ul>   
                     </li> 
+
+                    <li class="special_link">
+                        <a href="#"><i class="fa fa-database"></i> <span class="nav-label">Diagnostic Center</span></a>
+                    </li>
+
+                    <li id="admin">
+                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Admin </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li id="center">
+                                <a href="<?php echo base_url()."index.php/DiagnosticCenter/collectionCenter";?>" id="damian">Collection Center <span class="fa arrow"></span></a>
+                            </li>
+                            
+                            <li id="">
+                                <a href="#" id="damian">User Master <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li id="">
+                                        <a href="#">Assign New Department</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">User Status</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" id="">Test Master <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Department</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Test</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Profile</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Normal Values</a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">Specimen Master</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Interpretaion Entry</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Short Form</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Formula Setting</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Machine Detail</a>
+                                    </li>
+
+                                    
+                                    
+                                </ul>
+                            </li>
+                            <li id="lab">
+                                        <a href="<?php echo base_url()."index.php/DiagnosticCenter/lab";?>" id="damian">Lab unit<span class="fa arrow"></span></a>
+                            </li>
+
+                            <li id="">
+                                <a href="#" id="damian">Account <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li id="">
+                                        <a href="#">Unlock Center</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Bank</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="test">
+                                <a href="#" id="damian">Test Rate <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li id="rate">
+                                        <a href="<?php echo base_url()."index.php/DiagnosticCenter/rate";?>">Rate Type</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Rate Type Setting</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Test Rate</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Compliment Master</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li id="">
+                                <a href="#" id="damian">Admin <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li id="">
+                                        <a href="#">Marque</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Company Address</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Audit Trail</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Report Setting</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Initial Master</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">User Login Info</a>
+                                    </li>
+                                    <li id="">
+                                        <a href="#">Test Value Search</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+
+
+                        </ul>   
+                    </li> 
+
+
+
+
                 </ul>
             </div>
         </nav>

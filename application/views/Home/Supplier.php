@@ -36,8 +36,8 @@
         <td><?php echo $value['sup_name'];?></td>
         <td><?php echo $value['address'];?></td>
         <td><?php echo $value['city'];?></td>
-        <td class="center"><?php echo $value['telephone'];?></td>
-        <td class="center"><?php echo $value['fax_no'];?></td>
+        <td><?php echo $value['telephone'];?></td>
+        <td><?php echo $value['fax_no'];?></td>
         <td><?php echo $value['email'];?></td>
         <td><?php echo $value['web'];?></td>
         <td>
@@ -116,7 +116,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Edit Supplier Details</h4>
             </div>
-        <form  class="form-horizontal" id="form_supplier">
+        <form  class="form-horizontal" id="formEditSup">
                 <div class="modal-body">
                     <div class="form-group"><label class="col-sm-3 control-label">Supplier Name</label>
                         <div class="col-sm-9">
@@ -155,6 +155,7 @@
                         </div>
                     </div>
                </div>
+               <input type="hidden" name="id" id="id">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                 <button type="submit" id="supplier_button"   class="btn btn-primary">Update</button>
@@ -225,7 +226,7 @@
                         tr.append("<td>" + o.email + "</td>");
                         tr.append("<td>" + o.web + "</td>");
                         tr.append(
-'<td><button class="btn btn-warning" id="supEdit" data-toggle="modal" data-target="#editSupModal onclick="editSup('+o.id+')"><i class="fa fa-pencil"></i></span></button></td>'
+'<td><button class="btn btn-warning" id="supEdit" data-toggle="modal" data-target="#editSupModal onclick="supplierEdit('+o.id+')"><i class="fa fa-pencil"></i></span></button></td>'
                             );
                         tr.append(
 '<td><button class="btn btn-warning" id="supDelete" onclick="deleteSup('+o.id+')"><i class="fa fa-trash"></i></span></button></td>'
@@ -294,11 +295,11 @@
                 //Set data to Modal
                 $('#id').attr("value",id);
                 $('#sup_name').attr("value",sup_name);
-                $('#address').html("value",address);
+                $('#address').attr("value",address);
                 $('#city').attr("value",city);
                 $('#telephone').attr("value",telephone);
                 $('#fax_no').attr("value",fax_no);
-                $('#email').html("value",email);
+                $('#email').attr("value",email);
                 $('#web').attr("value",web);
             },
             error:function(data){
