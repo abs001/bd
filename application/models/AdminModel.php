@@ -6,6 +6,16 @@ class AdminModel extends CI_Model {
 		$result = $this->db->get('role')->result_array();
 		return $result;
 	}
+	public function setLoginTime($login_date){
+		$this->db->update('admin',array('lastlogin'=>$login_date));
+	}
+	public function getLastLoginTime($username){
+		$this->db->select('lastlogin');
+		$result = $this->db->get_where('admin',array('email'=>$username));
+		$row = $result->row();
+		return $row->lastlogin;
+		
+	}
 	public function addRole($data){
 		$this->db->insert('role',$data);
 		if($this->db->affected_rows()>0){

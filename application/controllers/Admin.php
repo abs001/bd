@@ -25,6 +25,8 @@ class Admin extends CI_Controller {
 	}
 	public function logout()
 	{
+		$login_date = date("Y-m-d H:i:s");
+		$this->AdminModel->setLoginTime($login_date);
 		unset($_SESSION['admin']);
 		$this->session->set_flashdata('message','Successfully logged out');
 		redirect(base_url().'index.php/Admin/login');

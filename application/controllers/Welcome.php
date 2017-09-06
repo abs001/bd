@@ -6,6 +6,8 @@ class Welcome extends CI_Controller {
 	{
 		if (isset($_SESSION['admin'])) {
 			$this->session->set_flashdata('message','Welcome admin');
+			$this->load->model('AdminModel');         
+			$data['lastLogin'] = $this->AdminModel->getLastLoginTime($_SESSION['admin']);
 			$data['pagename'] = "home";
 			$data['active_menu'] = "dashboard";
 			$this->load->view('Director',$data);

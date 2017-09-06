@@ -10,9 +10,14 @@
             </form>
         </div>
             <ul class="nav navbar-top-links navbar-right">
-                <!-- <li>
-                    <span class="m-r-sm text-muted welcome-message"><?php //echo $_SESSION['message'];?></span>
-                </li> -->
+                <li>
+                    <span class="m-r-sm text-muted welcome-message"><?php 
+                    if (isset($lastLogin)) {
+                        echo "Last login in at : ".date("d M, Y, (H:i:s) a",strtotime($lastLogin));
+                    }
+                    
+                    ?></span>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
